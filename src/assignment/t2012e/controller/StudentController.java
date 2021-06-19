@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class StudentController {
     Scanner scanner = new Scanner(System.in);
     ArrayList<Student> list = new ArrayList<>();
-
     //ham tao moi sinh vien
     public Student create() {
         Student student = new Student();
@@ -36,7 +35,7 @@ public class StudentController {
         if (list.size() == 0) {
             System.out.println("Data empty, enter student info fist");
         } else {
-            System.out.printf("|%10s%15s%10s|%10s%10s%10s|%10s%25s%10s|%10s%15s%10s|\n",
+            System.out.printf("|%10s%15s%10s|%10s%20s%10s|%10s%25s%10s|%10s%15s%10s|\n",
                     "", "Roll Number", "",
                     "", "Full Name", "",
                     "", "Email", "",
@@ -57,7 +56,7 @@ public class StudentController {
                 Student st1 = list.get(i);
                 if (st1.getRollNumber().equals(rollNumber)) {
                     System.out.println("Student infomation is: \n");
-                    System.out.printf("|%10s%15s%10s|%10s%10s%10s|%10s%25s%10s|%10s%15s%10s|\n",
+                    System.out.printf("|%10s%15s%10s|%10s%20s%10s|%10s%25s%10s|%10s%15s%10s|\n",
                             "", "Roll Number", "",
                             "", "Full Name", "",
                             "", "Email", "",

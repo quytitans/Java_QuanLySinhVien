@@ -50,7 +50,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return String.format("|%10s%15s%10s|%10s%10s%10s|%10s%25s%10s|%10s%15s%10s|",
+        return String.format("|%10s%15s%10s|%10s%20s%10s|%10s%25s%10s|%10s%15s%10s|",
                 "", rollNumber, "",
                 "", fullName, "",
                 "", email, "",
