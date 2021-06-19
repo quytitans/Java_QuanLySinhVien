@@ -1,13 +1,16 @@
 package assignment.t2012e.controller;
 
 import assignment.t2012e.entity.Student;
+import assignment.t2012e.model.StudentModel;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentController {
     Scanner scanner = new Scanner(System.in);
-    ArrayList<Student> list = new ArrayList<>();
+    StudentModel studentModel = new StudentModel();
+    ArrayList<Student> list = studentModel.findAll();
+
     //ham tao moi sinh vien
     public Student create() {
         Student student = new Student();
@@ -32,7 +35,7 @@ public class StudentController {
 
     //ham show danh sach sinh vien
     public void showList() {
-        if (list.size() == 0) {
+        if (list == null) {
             System.out.println("Data empty, enter student info fist");
         } else {
             System.out.printf("|%10s%15s%10s|%10s%20s%10s|%10s%25s%10s|%10s%15s%10s|\n",
@@ -48,102 +51,63 @@ public class StudentController {
 
     //ham tim kiem sinh vien
     public void findStudent(String rollNumber) {
-        boolean flag = false;
-        if (list.size() == 0) {
+        if (list == null) {
             System.out.println("Data empty, enter student info fist");
         } else {
-            for (int i = 0; i < list.size(); i++) {
-                Student st1 = list.get(i);
-                if (st1.getRollNumber().equals(rollNumber)) {
-                    System.out.println("Student infomation is: \n");
-                    System.out.printf("|%10s%15s%10s|%10s%20s%10s|%10s%25s%10s|%10s%15s%10s|\n",
-                            "", "Roll Number", "",
-                            "", "Full Name", "",
-                            "", "Email", "",
-                            "", "Phone", "");
-                    System.out.println(st1.toString());
-                    flag = true;
-                }
-            }
-            if (flag == false) {
-                System.out.println("cant not find student info, please try again!!!");
+            Student st2 = studentModel.findById(rollNumber);
+            if (st2 == null) {
+                System.out.println("Cant find this student, please check again");
+            } else {
+                System.out.printf("|%10s%15s%10s|%10s%20s%10s|%10s%25s%10s|%10s%15s%10s|\n",
+                        "", "Roll Number", "",
+                        "", "Full Name", "",
+                        "", "Email", "",
+                        "", "Phone", "");
+                System.out.println(st2.toString());
             }
         }
     }
 
-    //ham xoa sinh vien theo rollnumber
+    //ham xoa sinh vien theo rollnumber update
     public void deleteStudent(String rollNumber) {
-        boolean flag = false;
-        if (list.size() == 0) {
+        if (list == null) {
             System.out.println("Data empty, enter student info fist");
         } else {
-            for (int i = 0; i < list.size(); i++) {
-                Student st1 = list.get(i);
-                if (st1.getRollNumber().equals(rollNumber)) {
-                    list.remove(i);
-                    System.out.println("Deleled student info.");
-                    flag = true;
-                }
+            Student st2 = studentModel.findById(rollNumber);
+            if (st2 == null) {
+                System.out.println("Cant find this student, please check again");
+            } else {
+                System.out.println("we found infomation, do you want to delete this ? Y/N: ");
             }
-            if (flag == false) {
-                System.out.println("cant not find student info, please try again!!!");
+            String choise = scanner.nextLine();
+            if (choise.equalsIgnoreCase("Y")){
+                studentModel.delete(rollNumber);
+                System.out.println("delete complele !!!");
+            }else {
+                System.out.println("bye bye !!!");
             }
         }
-
     }
 
     //Ham update thong tin sinh vien
     public void update(String rollNumber) {
-        boolean flag = false;
-        if (list.size() == 0) {
+        if (list == null) {
             System.out.println("Data empty, enter student info fist");
         } else {
-            for (int i = 0; i < list.size(); i++) {
-                Student st1 = list.get(i);
-                if (st1.getRollNumber().equals(rollNumber)) {
-                    while (true) {
-                        System.out.println("What information do you want to edit?");
-                        System.out.println("1. Student Name");
-                        System.out.println("2. Student Email");
-                        System.out.println("3. Student's Phone");
-                        System.out.println("0. Exit - Back to main menu");
-                        System.out.println("please enter your choice from 0 to 3 option: ");
-                        int choice = scanner.nextInt();
-                        scanner.nextLine();
-                        switch (choice) {
-                            case 1:
-                                System.out.println("Enter new name: ");
-                                String studentName = scanner.nextLine();
-                                st1.setFullName(studentName);
-                                System.out.println("saved");
-                                break;
-                            case 2:
-                                System.out.println("Enter new email: ");
-                                String studentEmail = scanner.nextLine();
-                                st1.setEmail(studentEmail);
-                                System.out.println("saved");
-                                break;
-                            case 3:
-                                System.out.println("Enter new phone number: ");
-                                String studentPhone = scanner.nextLine();
-                                st1.setPhone(studentPhone);
-                                System.out.println("saved");
-                                break;
-                            default:
-                                break;
-                        }
-                        if (choice == 0) {
-                            break;
-                        }
-                        scanner.nextLine();
-                    }
-                    flag = true;
-                }
-            }
-            if (flag == false) {
-                System.out.println("cant not find student info, please try again!!!");
+            Student st2 = studentModel.findById(rollNumber);
+            if (st2 == null) {
+                System.out.println("Cant find this student, please check again");
+            } else {
+                Student student = new Student();
+                System.out.println("Enter fullname: ");
+                student.setFullName(scanner.nextLine());
+                System.out.println("Enter email: ");
+                student.setEmail(scanner.nextLine());
+                System.out.println("Enter phone number: ");
+                student.setPhone(scanner.nextLine());
+                studentModel.update(rollNumber, student);
+                System.out.println("updated !!!");
             }
         }
-
     }
 }
