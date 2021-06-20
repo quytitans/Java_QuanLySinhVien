@@ -1,16 +1,13 @@
 package assignment.t2012e.view;
 
 import assignment.t2012e.controller.StudentController;
-import assignment.t2012e.entity.Student;
-import assignment.t2012e.model.StudentModel;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentMenu {
     Scanner scanner = new Scanner(System.in);
-    StudentModel studentModel = new StudentModel();
     StudentController studentController = new StudentController();
+
     public void generateStudentMenu() {
         while (true) {
             System.out.println("Student Management");
