@@ -61,6 +61,4 @@ public class StudentModel {
             return true;
         }
     }
-
-
 }
