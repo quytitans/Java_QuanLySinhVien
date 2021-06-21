@@ -31,10 +31,11 @@ public class TeacherMenu {
                     teacherController.showList();
                     break;
                 case 3:
-                    System.out.println("Update student");
+                    System.out.println("Update teacher");
                     System.out.println("Please enter roll number of teacher: ");
                     String rollNumber2 = scanner.nextLine();
                     teacherController.update(rollNumber2);
+                    scanner.nextLine();
                     System.out.println("List of current teacher is: ");
                     teacherController.showList();
                     break;
@@ -43,6 +44,7 @@ public class TeacherMenu {
                     System.out.println("Please enter roll number of teacher: ");
                     String rollNumber1 = scanner.nextLine();
                     teacherController.deleteById(rollNumber1);
+                    scanner.nextLine();
                     System.out.println("List of current teacher is: ");
                     teacherController.showList();
                     break;
@@ -60,6 +62,5 @@ public class TeacherMenu {
             }
             scanner.nextLine();
         }
-
     }
 }

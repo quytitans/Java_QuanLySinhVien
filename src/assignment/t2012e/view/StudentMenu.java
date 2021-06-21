@@ -35,6 +35,7 @@ public class StudentMenu {
                     System.out.println("Please enter roll number of student: ");
                     String rollNumber2 = scanner.nextLine();
                     studentController.update(rollNumber2);
+                    scanner.nextLine();
                     System.out.println("List of current student is: ");
                     studentController.showList();
                     break;
@@ -43,6 +44,7 @@ public class StudentMenu {
                     System.out.println("Please enter roll number of student: ");
                     String rollNumber1 = scanner.nextLine();
                     studentController.deleteStudent(rollNumber1);
+                    scanner.nextLine();
                     System.out.println("List of current student is: ");
                     studentController.showList();
                     break;
@@ -60,6 +62,5 @@ public class StudentMenu {
             }
             scanner.nextLine();
         }
-
     }
 }
