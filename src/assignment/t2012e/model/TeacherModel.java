@@ -9,12 +9,12 @@ public class TeacherModel {
     private ArrayList<Teacher> list = new ArrayList<>();
     {
         list = new ArrayList<>();
-        list.add(new Teacher("T111", "Nguyen Van", "qy@gmail.com","093349318"));
-        list.add(new Teacher("T112", "Dang Thi", "xa@gmail.com","091149258"));
+        list.add(new Teacher("T111", "Nguyen Hai", "qy@gmail.com","093349318"));
+        list.add(new Teacher("T112", "Dang Kao", "xa@gmail.com","091149258"));
         list.add(new Teacher("T113", "Dang Minh", "t@gmail.com","091133158"));
         list.add(new Teacher("T114", "Bui Thi Kieu", "lnk@gmail.com","095493158"));
-        list.add(new Teacher("T115", "Nguyen Van", "bih@gmail.com","091663158"));
-        list.add(new Teacher("T16", "Nguyen Xuan", "kim@gmail.com","099993158"));
+        list.add(new Teacher("T115", "Nguyen Quy", "bih@gmail.com","091663158"));
+        list.add(new Teacher("T116", "Nguyen Phong", "kim@gmail.com","099993158"));
     }
 
     //add new data to list
